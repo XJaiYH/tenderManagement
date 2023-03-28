@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bit.tenderManageSystem.dao.UserMapper">
+    <sql id="insertFields">
+        username, password, phone, salt, type, last_login_time, status
+    </sql>
+    <sql id="selectFields">
+        user_id, username, password, phone, salt, type, last_login_time, status
+    </sql>
+
+    <select id="selectById" resultType="User">
+        select <include refid="selectFields"></include>
+        from user
+        where user_id = #{userId}
+    </select>
+
+    <select id="selectByName" resultType="User">
+        select <include refid="selectFields"></include>
+        from user
+        where username = #{userName}
+    </select>
+
+    <select id="selectUsers" resultType="User">
+        select <include refid="selectFields"></include>
+        from user
+    </select>
+
+    <update id="updatePassword">
+        update user set password=#{pwd} where user_id=#{userId}
+    </update>
+
+    <update id="updatePhone">
+        update user set phone=#{phone} where user_id=#{userId}
+    </update>
+
+    <update id="updateUserName">
+        update user set username=#{userName} where user_id=#{userId}
+    </update>
+
+    <update id="updateStatus">
+        update user set status=#{status} where user_id=#{userId}
+    </update>
+
+    <update id="updateType">
+        update user set type=#{type} where user_id=#{userId}
+    </update>
+
+    <insert id="insertUser" parameterType="User" keyProperty="id" >
+        insert into user
+        (<include refid="insertFileds"></include>)
+        values(#{userName}, #{password}, #{phone}, #{salt}, #{type}, #{lastLoginTime}, #{status})
+    </insert>
+</mapper>

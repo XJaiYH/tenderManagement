@@ -2,18 +2,30 @@ package com.bit.tenderManageSystem.entity;
 
 import java.util.Date;
 
-public class user {
+public class User {
 
     private int userId;
     private String userName;
     private String password;
     private String phone;
-    private String ticket;
     private String salt;
-    private String email;
     private int type;
     private Date lastLoginTime;
     private int status;
+
+    @Override
+    public String toString() {
+        return "user{" +
+                "userId=" + userId +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", salt='" + salt + '\'' +
+                ", type=" + type +
+                ", lastLoginTime=" + lastLoginTime +
+                ", status=" + status +
+                '}';
+    }
 
     public String getUserName() {
         return userName;
@@ -39,28 +51,12 @@ public class user {
         this.phone = phone;
     }
 
-    public String getTicket() {
-        return ticket;
-    }
-
-    public void setTicket(String ticket) {
-        this.ticket = ticket;
-    }
-
     public String getSalt() {
         return salt;
     }
 
     public void setSalt(String salt) {
         this.salt = salt;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public int getType() {
